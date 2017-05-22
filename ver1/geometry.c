@@ -22,33 +22,12 @@ void clear_object(P_OBJECT o){
 	}
 }
 
-void set_new_position(P_OBJECT o) {
-	o->posx = o->posx + o->dirx;
-	o->posy = o->posy + o->diry;
-}
-
 void move_object(P_OBJECT o){
 	clear_object(o);
 	
-	set_new_position(o);
-	// X-LED
-	if(o->posx < 3) {
-		o->dirx = -(o->dirx);
-		o->posx = 3;
-	}
-	if((o->posx + o->geo->sizex) >128){
-		o->dirx = -(o->dirx);
-		o->posx = 128 - o->geo->sizex;
-	}
-	// Y-LED
-	if(o->posy < 3) {
-		o->diry = -(o->diry);
-		o->posy = 3;
-	}
-	if((o->posy + o->geo->sizey) > 64){
-		o->diry = -(o->diry);
-		o->posy = 64 - o->geo->sizey;
-	}
+	// set new positions
+	o->posx = o->posx + o->dirx;
+	o->posy = o->posy + o->diry;
 	
 	draw_object(o);
 }
