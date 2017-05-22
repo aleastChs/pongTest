@@ -177,8 +177,8 @@ static OBJECT p2 =
 
 
 volatile P_OBJECT pong = &ball;
-volatile P_OBJECT player1 = &p1;
-volatile P_OBJECT player2 = &p2;
+volatile P_OBJECT playerLeft = &p1;
+volatile P_OBJECT playerRight = &p2;
 /**************************************************************************************************************************************
 
 											FUNCTION PROTOTYPES
@@ -203,9 +203,9 @@ void init_micro_computer(void){
 void drawing_init(void){
 	draw_object(pong);	
 	delay_milli(delay);
-	draw_object(player1);
+	draw_object(playerLeft);
 	delay_milli(delay);
-	draw_object(player2);
+	draw_object(playerRight);
 	delay_milli(delay);
 	
 	
@@ -227,7 +227,7 @@ void drawing_init(void){
 
 int main(void)
 {
-	
+	init_micro_computer();
 	app_init_display();
 	app_init_keyboards();
 	graphic_initalize();
