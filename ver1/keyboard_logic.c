@@ -18,7 +18,14 @@ const uint8 key[] = { 1, 4, 7, 0xE, 2, 5, 8, 0x0, 3, 0x6, 9, 0xF, 0xA, 0xB, 0xC,
  
  
 void app_init_keyboards(void) {
-	GPIO_D->moder = 0x55005500;
+	GPIO_D->moder 	= (uint32) 0x55005500;		// make 15-12,7-4 to outport, 11-8, 3-0 inport 
+	GPIO_D->otyper 	= (uint16) 0x0000;			// push pull to outport 
+	GPIO_D->pupdr	= (uint32) 0x00AA00AA;		// pull-down to inports
+	// set to zero
+	GPIO_D->idrHigh = (uint8)  0x00;			 
+	GPIO_D->idrLow  = (uint8)  0x00;
+	GPIO_D->odrHigh = (uint8)  0x00;
+	GPIO_D->odrLow  = (uint8)  0x00;
 }
 /*
  * choose low gpio	: 	0

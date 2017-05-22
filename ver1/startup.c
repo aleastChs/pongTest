@@ -193,16 +193,9 @@ volatile P_OBJECT player2 = &p2;
 **************************************************************************************************************************************/
 
 
-void init_key(void){
+void init_micro_computer(void){
 	RCC_EHB1ENR |= ENABLE_GPIO_D | ENABLE_GPIO_E; // enable gpio d and e on the MD407 Card
-	GPIO_D->moder 	= (uint32) 0x55005500;		// make 15-12,7-4 to outport, 11-8, 3-0 inport 
-	GPIO_D->otyper 	= (uint16) 0x0000;			// push pull to outport 
-	GPIO_D->pupdr	= (uint32) 0x00AA00AA;		// pull-down to inports
-	// set to zero
-	GPIO_D->idrHigh = (uint8)  0x00;			 
-	GPIO_D->idrLow  = (uint8)  0x00;
-	GPIO_D->odrHigh = (uint8)  0x00;
-	GPIO_D->odrLow  = (uint8)  0x00;
+	
 }
 
 // draw every object on the lcd display
