@@ -15,6 +15,20 @@ typedef volatile GPIO* gpioptr;
 #define GPIO_E 				((gpioptr)	 	0x40021000)   // definera en pekare av typen GPIO till Port E:s adress
 
 
+#define B_E         0x40
+#define B_RST       0x20
+#define B_CS2       0x10
+#define B_CS1       0x08
+#define B_SELECT    4
+#define B_RW        2
+#define B_RS        1 
+ 
+#define LCD_ON          0x3F // Display on
+#define LCD_OFF         0x3E // Display off
+#define LCD_SET_ADD     0x40
+#define LCD_SET_PAGE    0xB8
+#define LCD_DISP_START  0xC0
+#define LCD_BUSY        0x80
 
 /**************************************************************************************************************************************
 

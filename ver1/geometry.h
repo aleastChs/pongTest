@@ -9,8 +9,6 @@
 
 #include "standard_types.h"
 
-
-
 typedef struct {
 	uint8 x;
 	uint8 y;
