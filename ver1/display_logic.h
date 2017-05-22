@@ -24,7 +24,7 @@
 #define LCD_DISP_START  0xC0
 #define LCD_BUSY        0x80
 
-void app_init(void);
+void app_init_display(void);
 void graphic_ctrl_bit_set(uint8 x);
 void graphic_ctrl_bit_clear(uint8 x);
 void select_controller(uint8 controller);

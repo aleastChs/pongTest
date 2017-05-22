@@ -1,0 +1,1 @@
+./Debug/startup.c.o ./Debug/ascii_logic.c.o ./Debug/delay.c.o ./Debug/display_logic.c.o ./Debug/game_logic.c.o ./Debug/geometry.c.o ./Debug/keyboard_logic.c.o   

@@ -28,7 +28,7 @@ typedef volatile GPIO* gpioptr;
 #define LCD_DISP_START  0xC0
 #define LCD_BUSY        0x80
  
-void app_init(void) 
+void app_init_display(void) 
 {   
     GPIO_E->moder    = (uint32) 0x55555555;      // make 7-0 to outport
      

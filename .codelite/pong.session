@@ -12,7 +12,7 @@
     </TabInfo>
     <TabInfo>
       <wxString Value="C:\Users\Elev\Dropbox\Chalmers\EDA487\Labbar\Lab5\ZPEL\ver3\startup.c" Name="FileName"/>
-      <int Value="11" Name="FirstVisibleLine"/>
+      <int Value="0" Name="FirstVisibleLine"/>
       <int Value="0" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>

@@ -16,7 +16,7 @@ typedef struct {
 	uint8 y;
 } POINT;
 
-#define MAX_POINTS 20
+#define MAX_POINTS 400
 
 typedef struct {
 	uint32 numpoints;
