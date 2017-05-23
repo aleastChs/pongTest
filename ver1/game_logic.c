@@ -42,7 +42,7 @@ uint8 inside_y_wise(P_OBJECT object1, P_OBJECT object2) {
 	uint8 obj1_top_coord = object1->posy;
 	
 	uint8 obj2_top_coord = object2->posy;
-	uint8 obj2_bottom_coord = object2->posy + object2->geo->sizey;
+	uint8 obj2_bottom_coord = obj2_top_coord + object2->geo->sizey;
 	
 	uint8 value = 0;
 	if (obj1_top_coord >= obj2_top_coord && obj1_top_coord <= obj2_bottom_coord) {
@@ -92,24 +92,36 @@ void check_ball(P_OBJECT playerLeft, P_OBJECT playerRight, P_OBJECT ball){
 
 // CHECK WALLS PLAYERS
 	
-	if (   ( ball_right_side_coord + 1)  == wall_player_right  ) { // playerRight
-		if (inside_y_wise(ball, playerRight)) {
+	if (   ( ball_right_side_coord + 1)  == wall_player_right  ) 
+	{ // playerRight
+	
+		if (inside_y_wise(ball, playerRight)) 
+		{
 			ball->dirx = -(ball->dirx);
 			ball->posx = wall_player_right - ball->geo->sizex;
 		}
-	} else if (    (ball_left_side_coord - 1) == wall_player_left ) { // playerLeft
-		if (inside_y_wise(ball, playerLeft)) {
+		
+	} 
+	else if (    (ball_left_side_coord - 1) == wall_player_left ) 
+	{ // playerLeft
+		
+		if (inside_y_wise(ball, playerLeft)) 
+		{
 			ball->dirx = -(ball->dirx);
 			ball->posx = wall_player_left;
 		}
+		
 	}
 // END CHECK WALLS PLAYERS
 	
 	
 // CHECK FLOOR / BOTTOM
-	if (ball_top_coord <= 2) {
+	if (ball_top_coord <= 2) 
+	{
 		ball->diry = -(ball->diry);
-	} else if( ball_bottom_coord >= 62) {
+	} 
+	else if( ball_bottom_coord >= 62) 
+	{
 		ball->diry = -(ball->diry);
 	}
 // END CHECK FLOOR / BOTTOM	

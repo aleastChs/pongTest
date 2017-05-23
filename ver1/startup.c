@@ -15,6 +15,7 @@
 #include "display_logic.h"
 #include "geometry.h"
 #include "keyboard_logic.h"
+#include "player_logic.h"
 
 /**************************************************************************************************************************************
 

@@ -13,7 +13,7 @@ CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=Elev
-Date                   :=22/05/2017
+Date                   :=23/05/2017
 CodeLitePath           :=C:/cseapp/CodeLite
 LinkerName             :=$(CodeLiteDir)/tools/gcc-arm/bin/arm-none-eabi-g++.exe
 SharedObjectLinkerName :=$(CodeLiteDir)/tools/gcc-arm/arm-none-eabi-g++.exe -shared -fPIC
@@ -62,7 +62,7 @@ AS       := $(CodeLiteDir)/tools/gcc-arm/bin/arm-none-eabi-as.exe
 ## User defined environment variables
 ##
 CodeLiteDir:=C:\cseapp\CodeLite
-Objects0=$(IntermediateDirectory)/startup.c$(ObjectSuffix) $(IntermediateDirectory)/ascii_logic.c$(ObjectSuffix) $(IntermediateDirectory)/delay.c$(ObjectSuffix) $(IntermediateDirectory)/display_logic.c$(ObjectSuffix) $(IntermediateDirectory)/game_logic.c$(ObjectSuffix) $(IntermediateDirectory)/geometry.c$(ObjectSuffix) $(IntermediateDirectory)/keyboard_logic.c$(ObjectSuffix) 
+Objects0=$(IntermediateDirectory)/startup.c$(ObjectSuffix) $(IntermediateDirectory)/ascii_logic.c$(ObjectSuffix) $(IntermediateDirectory)/delay.c$(ObjectSuffix) $(IntermediateDirectory)/display_logic.c$(ObjectSuffix) $(IntermediateDirectory)/game_logic.c$(ObjectSuffix) $(IntermediateDirectory)/geometry.c$(ObjectSuffix) $(IntermediateDirectory)/keyboard_logic.c$(ObjectSuffix) $(IntermediateDirectory)/player_logic.c$(ObjectSuffix) 
 
 
 
@@ -153,6 +153,14 @@ $(IntermediateDirectory)/keyboard_logic.c$(DependSuffix): keyboard_logic.c
 
 $(IntermediateDirectory)/keyboard_logic.c$(PreprocessSuffix): keyboard_logic.c
 	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/keyboard_logic.c$(PreprocessSuffix)keyboard_logic.c
+
+$(IntermediateDirectory)/player_logic.c$(ObjectSuffix): player_logic.c $(IntermediateDirectory)/player_logic.c$(DependSuffix)
+	$(CC) $(SourceSwitch) "C:/github/pongTest/ver1/player_logic.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/player_logic.c$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/player_logic.c$(DependSuffix): player_logic.c
+	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/player_logic.c$(ObjectSuffix) -MF$(IntermediateDirectory)/player_logic.c$(DependSuffix) -MM player_logic.c
+
+$(IntermediateDirectory)/player_logic.c$(PreprocessSuffix): player_logic.c
+	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/player_logic.c$(PreprocessSuffix)player_logic.c
 
 
 -include $(IntermediateDirectory)/*$(DependSuffix)

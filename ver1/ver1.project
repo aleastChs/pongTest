@@ -141,6 +141,8 @@ monitor restart</PostConnectCommands>
     <File Name="keyboard_logic.c"/>
     <File Name="keyboard_logic.h"/>
     <File Name="standard_types.h"/>
+    <File Name="player_logic.h"/>
+    <File Name="player_logic.c"/>
   </VirtualDirectory>
   <VirtualDirectory Name="resources">
     <File Name="md407-ram.x"/>

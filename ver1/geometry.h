@@ -37,7 +37,7 @@ typedef struct tObj {
 
 void set_object_speed(P_OBJECT o, uint32 speedx, uint32 speedy);
 void move_object(P_OBJECT o);
-void set_new_position(P_OBJECT o);
+void set_new_podsition(P_OBJECT o);
 void clear_object(P_OBJECT o);
 void draw_object(P_OBJECT o);
 
