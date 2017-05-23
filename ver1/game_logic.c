@@ -21,6 +21,25 @@
  * RETURN THE POSITION IN X
  */ 
 
+void update_ascii_display(char textTop[], char textBottom[]) 
+{
+	char *str;
+	
+	ascii_gotoxt(1,1);
+	
+	str = textTop;
+	
+	while(*str) {
+		ascii_write_char(*str++);
+	}
+	ascii_gotoxt(1,2);
+	str = textBottom;
+	
+	while(*str) {
+		ascii_write_char(*str++);
+	}
+}
+
 uint8 get_wall_player(P_OBJECT player, uint8 isLeftWall) {
 	uint32 x;
 	
@@ -136,21 +155,20 @@ void check_ball(P_OBJECT playerLeft, P_OBJECT playerRight, P_OBJECT ball)
 	
 
 }
-
-
-void update_player_pos(P_PLAYER playerLeft, P_PLAYER playerRight) 
-{
-	// read keyboard left
-	// if:		 2_IS_PRESSED 
-	//					playerLeft->set_speed(0,1);
+// read keyboard right
+	// if:		2_IS_PRESSED 
+	//					playerXX->set_speed(0,1);
 	//			CHECK IF ENABLE TO MOVE
 	//									THEN DRAW
 	// else if:	 8_IS_PRESSED 
-	//					playerLeft->set_speed(0,-1);
+	//					plauerXX->set_speed(0,-1);
 	//			CHECK IF ENABLE TO MOVE
 	//									THEN DRAW
+
+void update_player_pos(P_PLAYER playerLeft, P_PLAYER playerRight) 
+{	
 	
-	
+// Player to The LEFT
 	playerLeft->key_pressed = get_key(1);
 	
 	volatile uint8 pressed = playerLeft->key_pressed;
@@ -167,16 +185,7 @@ void update_player_pos(P_PLAYER playerLeft, P_PLAYER playerRight)
 	}
 	
 	
-	// read keyboard right
-	// if:		2_IS_PRESSED 
-	//					playerRight->set_speed(0,1);
-	//			CHECK IF ENABLE TO MOVE
-	//									THEN DRAW
-	// else if:	 0_IS_PRESSED 
-	//					playerRight->set_speed(0,-1);
-	//			CHECK IF ENABLE TO MOVE
-	//									THEN DRAW
-	
+// Player to The Right	
 	playerRight->key_pressed = get_key(0);
 	pressed = playerRight->key_pressed;
 	
@@ -192,6 +201,23 @@ void update_player_pos(P_PLAYER playerLeft, P_PLAYER playerRight)
 	}
 }
 
+
+// Pass the ball 
+// And if toTheRight is 
+//						0:		start the ball to the left direction			
+//						1:		start the ball to the right direction
+void start_new_ball(P_OBJECT b, uint8 toTheRight)
+{
+	b->posx = 64;
+	b->posy = 20;
+	
+	b->set_speed(b,-1,b->diry);
+	
+	if (toTheRight != 0) 
+	{
+		b->set_speed(b	,	1	,	b->diry);
+	}
+}
 
 /* 
  * UPDATE THE POSITION OF THE BALL
@@ -211,23 +237,8 @@ void ping(P_PLAYER playerLeft, P_PLAYER playerRight, P_OBJECT ball) {
 }
 
 void welcome(void) {
-	char *str;
 	char welcoming[] = "Welcome To The";
 	char game[] = "Greatest Game Ever?";
 	
-	ascii_gotoxt(1,1);
-	
-	str = welcoming;
-	
-	
-	
-	while(*str) {
-		ascii_write_char(*str++);
-	}
-	ascii_gotoxt(1,2);
-	str = game;
-	
-	while(*str) {
-		ascii_write_char(*str++);
-	}
+	update_ascii_display(welcoming, game);
 }
