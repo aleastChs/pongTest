@@ -9,6 +9,7 @@
 #include "geometry.h"
 #include "game_logic.h"
 #include "delay.h"
+#include "ascii_logic.h"
 
 /*
  * GET THE POSITION OF THE PLAYER
@@ -171,4 +172,26 @@ void ping(P_OBJECT playerLeft, P_OBJECT playerRight, P_OBJECT ball) {
 	//									THEN DRAW
 	
 	
+}
+
+void welcome(void) {
+	char *str;
+	char welcoming[] = "Welcome To The";
+	char game[] = "Greatest Game Ever";
+	
+	ascii_gotoxt(1,1);
+	
+	str = welcoming;
+	
+	
+	
+	while(*str) {
+		ascii_write_char(*str++);
+	}
+	ascii_gotoxt(1,2);
+	str = game;
+	
+	while(*str) {
+		ascii_write_char(*str++);
+	}
 }

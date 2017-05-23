@@ -7,7 +7,6 @@
 #include "config_gpio.h"
 #include "standard_types.h"
 #include "delay.h"
-#include "display_logic.h"
 #include "ascii_logic.h"
 
 typedef volatile GPIO* gpioptr;
@@ -230,4 +229,22 @@ uint8 ascii_read_controller(void){
     read = GPIO_E->idrHigh;
     ascii_ctrl_bit_clear(B_E);
     return read;
+}
+
+
+void ascii_init(void) 
+{
+    ascii_ctrl_bit_clear(B_RS);
+    ascii_ctrl_bit_clear(B_RW);
+	ascii_write_cmd(0xE);
+	ascii_write_cmd(0x38);
+	//ascii_function_set(2);
+	ascii_clear_display();
+	
+	
+	//ascii_display_controll(4);
+	ascii_write_cmd(0x6);
+	ascii_write_cmd(0x02);
+	
+	//ascii_entry_mode_set(2);
 }

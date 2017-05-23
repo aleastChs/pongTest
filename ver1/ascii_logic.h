@@ -38,4 +38,6 @@ void ascii_display_controll(uint8 ctrl);
 void ascii_entry_mode_set(uint8 mode);
 void ascii_gotoxt(int row, int col);
 
+void ascii_init(void);
+
 #endif
