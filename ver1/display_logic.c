@@ -30,7 +30,7 @@ typedef volatile GPIO* gpioptr;
  
 void app_init_display(void) 
 {   
-    GPIO_E->moder    = (uint32) 0x55555555;      // make 7-0 to outport
+    GPIO_E->moder    = (uint32) 0x55555555;      // make 15-0 to outport
      
 }
  

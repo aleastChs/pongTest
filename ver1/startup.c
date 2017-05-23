@@ -222,14 +222,15 @@ int main(void)
 	app_init_display();
 	app_init_keyboards();
 	
-	graphic_initalize();
+	//graphic_initalize();
 	ascii_init();
 	
-	graphic_clear_screen();
+	//graphic_clear_screen();
 	
-	drawing_init();
+	//drawing_init();
 	ascii_clear_display();
 	
+	welcome();
 
 	/*
 
