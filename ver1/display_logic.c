@@ -174,7 +174,8 @@ void graphic_initalize(void){
 	delay_micro(10);
 	
 	graphic_ctrl_bit_clear(B_CS1 | B_CS2 | B_RST | B_E);
-	delay_milli(30);
+	delay_micro(10);
+	//delay_milli(30);
 	
 	graphic_ctrl_bit_set(B_RST);
 	

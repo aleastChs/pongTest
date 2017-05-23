@@ -8,7 +8,7 @@
 #include "keyboard_logic.h"
 #include "geometry.h"
 #include "game_logic.h"
-
+#include "delay.h"
 
 /*
  * GET THE POSITION OF THE PLAYER
@@ -40,10 +40,10 @@ uint8 get_wall_player(P_OBJECT player, uint8 isLeftWall) {
  */ 
 uint8 inside_y_wise(P_OBJECT object1, P_OBJECT object2) {
 	uint8 obj1_top_coord = object1->posy;
-	
+	delay_250ns();
 	uint8 obj2_top_coord = object2->posy;
 	uint8 obj2_bottom_coord = obj2_top_coord + object2->geo->sizey;
-	
+	delay_250ns();
 	uint8 value = 0;
 	if (obj1_top_coord >= obj2_top_coord && obj1_top_coord <= obj2_bottom_coord) {
 		value = 1;
@@ -63,10 +63,12 @@ uint8 inside_y_wise(P_OBJECT object1, P_OBJECT object2) {
 void check_ball(P_OBJECT playerLeft, P_OBJECT playerRight, P_OBJECT ball)
 {
 	uint8 wall_player_left = get_wall_player(playerLeft, 1);
+	delay_250ns();
 	uint8 wall_player_right = get_wall_player(playerRight, 0);
-	
+	delay_250ns();
 	uint8 ball_right_side_coord = (ball->posx + ball->geo->sizex);
 	uint8 ball_left_side_coord = ball->posx;
+	delay_250ns();
 	uint8 ball_top_coord = ball->posy;
 	uint8 ball_bottom_coord = ball->posy + ball->geo->sizey;
 	
@@ -92,14 +94,15 @@ void check_ball(P_OBJECT playerLeft, P_OBJECT playerRight, P_OBJECT ball)
 
 
 // CHECK WALLS PLAYERS
-	
+	delay_250ns();
 	if (   ( ball_right_side_coord + 1)  == wall_player_right  ) 
 	{ // playerRight
 	
 		if (inside_y_wise(ball, playerRight)) 
 		{
 			ball->dirx = -(ball->dirx);
-			ball->posx = wall_player_right - ball->geo->sizex;
+			delay_250ns();
+			ball->posx = wall_player_right - ball->geo->sizex - 1;
 		}
 		
 	} 
@@ -109,7 +112,8 @@ void check_ball(P_OBJECT playerLeft, P_OBJECT playerRight, P_OBJECT ball)
 		if (inside_y_wise(ball, playerLeft)) 
 		{
 			ball->dirx = -(ball->dirx);
-			ball->posx = wall_player_left;
+			delay_250ns();
+			ball->posx = wall_player_left + 1;
 		}
 		
 	}
@@ -117,6 +121,7 @@ void check_ball(P_OBJECT playerLeft, P_OBJECT playerRight, P_OBJECT ball)
 	
 	
 // CHECK FLOOR / BOTTOM
+	delay_250ns();
 	if (ball_top_coord <= 2) 
 	{
 		ball->diry = -(ball->diry);
@@ -142,9 +147,9 @@ void check_ball(P_OBJECT playerLeft, P_OBJECT playerRight, P_OBJECT ball)
 void ping(P_OBJECT playerLeft, P_OBJECT playerRight, P_OBJECT ball) {
 	// check the postion of the ball related to the players / walls -> change direction if collision / score if goal
 	check_ball(playerLeft, playerRight, ball);				
-	
+	delay_micro(5);
 	ball->move(ball);
-	
+	delay_micro(5);
 	// read keyboard left
 	// if:		 2_IS_PRESSED 
 	//					playerLeft->set_speed(0,1);

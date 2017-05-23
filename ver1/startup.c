@@ -16,6 +16,7 @@
 #include "geometry.h"
 #include "keyboard_logic.h"
 #include "player_logic.h"
+#include "game_logic.h"
 
 /**************************************************************************************************************************************
 
@@ -23,7 +24,7 @@
 
 **************************************************************************************************************************************/  
 typedef volatile GPIO* gpioptr;
-volatile int delay = 0;
+volatile int delay = 1;
 
 /**************************************************************************************************************************************
 
@@ -95,7 +96,7 @@ OBJECT ball =
 {
 	&ball_geometry,
 	0,0,
-	100,50,
+	12,50,
 	draw_object,
 	clear_object,
 	move_object,
@@ -157,7 +158,7 @@ OBJECT p1_obj =
 {
 	&player_geometry,
 	0,0,
-	5,15,
+	2,25,
 	draw_object,
 	clear_object,
 	move_object,
@@ -220,7 +221,7 @@ void drawing_init(void){
 	delay_milli(delay);
 	
 	
-	pong->set_speed(pong,1,1);
+	pong->set_speed(pong,-1,-1);
 }
 
 
@@ -253,6 +254,6 @@ int main(void)
 	while(1){
 		ping(playerLeft->p_obj, playerRight->p_obj, pong);
 		//40 milli i hårdvara
-		delay_milli(4*delay);
+		//delay_milli(4*delay);
 	}
 }
