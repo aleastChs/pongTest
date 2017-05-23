@@ -31,7 +31,7 @@ void app_init_keyboards(void) {
  * choose low gpio	: 	0
  * choose high gpio	: 	1
  */ 
-uint8 get_key(uint8 chooseHighOrLow) 
+uint8 get_key(uint8 chooseHigh) 
 {
 	uint8 keyBoard = 0xFF;	//define keyboard
 	for(uint8 row = 1; row <=4; row++)		// for each of the rows...
@@ -43,14 +43,14 @@ uint8 get_key(uint8 chooseHighOrLow)
 		
 		// depending on the input chooseHighOrLow
 		// assign the different funtions (high/low)
-		if(chooseHighOrLow == 1){
+		if(chooseHigh == 1){
 			uint32 kbd_get_col_high(void);
 			void kbd_activate_high(uint32 row);
 			
 			activatePtr 	= kbd_activate_high;
 			getColPtr 		= kbd_get_col_high;
 		}
-		if(chooseHighOrLow == 0){
+		if(chooseHigh == 0){
 			uint32 kbd_get_col_low(void);
 			void kbd_activate_low(uint32 row);
 			

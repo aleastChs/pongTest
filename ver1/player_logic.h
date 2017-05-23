@@ -6,7 +6,8 @@
 
 typedef struct {
 	P_OBJECT p_obj;
-	uint8 score;	
+	uint8 score;
+	uint8 key_pressed;	
 } PLAYER, *P_PLAYER;
 
 

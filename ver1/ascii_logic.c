@@ -236,15 +236,18 @@ void ascii_init(void)
 {
     ascii_ctrl_bit_clear(B_RS);
     ascii_ctrl_bit_clear(B_RW);
-	ascii_write_cmd(0xE);
-	ascii_write_cmd(0x38);
-	//ascii_function_set(2);
+	//ascii_write_cmd(0xE);
+	ascii_display_controll(4);
+	//ascii_write_cmd(0x38);
+	ascii_function_set(2);
+	
 	ascii_clear_display();
 	
 	
-	//ascii_display_controll(4);
-	ascii_write_cmd(0x6);
-	ascii_write_cmd(0x02);
+	
+	ascii_write_cmd(0x4);
+	//ascii_entry_mode_set(1);
+	ascii_write_cmd(0x02);	// return home
 	
 	//ascii_entry_mode_set(2);
 }

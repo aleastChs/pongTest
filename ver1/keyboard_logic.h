@@ -11,7 +11,7 @@
 
 uint32 kbd_get_col_high(void);
 uint32 kbd_get_col_low(void);
-uint8 get_key(uint8 chooseHighOrLow);
+uint8 get_key(uint8 chooseHigh);
 void kbd_activate_low(uint32 row);
 void kbd_activate_high(uint32 row);
 void app_init_keyboards(void);

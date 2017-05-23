@@ -10,6 +10,7 @@
 #include "game_logic.h"
 #include "delay.h"
 #include "ascii_logic.h"
+#include "player_logic.h"
 
 /*
  * GET THE POSITION OF THE PLAYER
@@ -137,29 +138,34 @@ void check_ball(P_OBJECT playerLeft, P_OBJECT playerRight, P_OBJECT ball)
 }
 
 
-/* 
- * UPDATE THE POSITION OF THE BALL
- * IF GOAL, 
- * 						PRINT SCORE TO THE PLAYER 
- * IF KEYBOARD_PRESSED, 
- * 						MOVE THE PLAYER
- * RENDER THE SCREEN
- */ 
-void ping(P_OBJECT playerLeft, P_OBJECT playerRight, P_OBJECT ball) {
-	// check the postion of the ball related to the players / walls -> change direction if collision / score if goal
-	check_ball(playerLeft, playerRight, ball);				
-	delay_micro(5);
-	ball->move(ball);
-	delay_micro(5);
+void update_player_pos(P_PLAYER playerLeft, P_PLAYER playerRight) 
+{
 	// read keyboard left
 	// if:		 2_IS_PRESSED 
 	//					playerLeft->set_speed(0,1);
 	//			CHECK IF ENABLE TO MOVE
 	//									THEN DRAW
-	// else if:	 0_IS_PRESSED 
+	// else if:	 8_IS_PRESSED 
 	//					playerLeft->set_speed(0,-1);
 	//			CHECK IF ENABLE TO MOVE
 	//									THEN DRAW
+	
+	
+	playerLeft->key_pressed = get_key(1);
+	
+	volatile uint8 pressed = playerLeft->key_pressed;
+	
+	if ((pressed == 2) && (playerLeft->p_obj->posy >= 2)) 
+	{
+		playerLeft->p_obj->set_speed(playerLeft->p_obj,0,1);
+		playerLeft->p_obj->move(playerLeft->p_obj);
+	} 
+	else if(  (pressed == 8)    && (  (playerLeft->p_obj->posy + playerLeft->p_obj->geo->sizey)   <=    64))
+	{
+		playerLeft->p_obj->set_speed(playerLeft->p_obj,0,-1);
+		playerLeft->p_obj->move(playerLeft->p_obj);
+	}
+	
 	
 	// read keyboard right
 	// if:		2_IS_PRESSED 
@@ -171,13 +177,43 @@ void ping(P_OBJECT playerLeft, P_OBJECT playerRight, P_OBJECT ball) {
 	//			CHECK IF ENABLE TO MOVE
 	//									THEN DRAW
 	
+	playerRight->key_pressed = get_key(0);
+	pressed = playerRight->key_pressed;
 	
+	if ((pressed == 2) && (playerRight->p_obj->posy >= 2)) 
+	{
+		playerRight->p_obj->set_speed(playerRight->p_obj,0,1);
+		playerRight->p_obj->move(playerRight->p_obj);
+	}
+	else if ((pressed == 8)    && (  (playerRight->p_obj->posy + playerRight->p_obj->geo->sizey)   <=    64)) 
+	{
+		playerRight->p_obj->set_speed(playerRight->p_obj,0,-1);
+		playerRight->p_obj->move(playerRight->p_obj);
+	}
+}
+
+
+/* 
+ * UPDATE THE POSITION OF THE BALL
+ * IF GOAL, 
+ * 						PRINT SCORE TO THE PLAYER 
+ * IF KEYBOARD_PRESSED, 
+ * 						MOVE THE PLAYER
+ * RENDER THE SCREEN
+ */ 
+void ping(P_PLAYER playerLeft, P_PLAYER playerRight, P_OBJECT ball) {
+	// check the postion of the ball related to the players / walls -> change direction if collision / score if goal
+	check_ball(playerLeft->p_obj, playerRight->p_obj, ball);				
+	delay_micro(5);
+	//ball->move(ball);
+	delay_micro(5);
+	update_player_pos(playerLeft,playerRight);
 }
 
 void welcome(void) {
 	char *str;
 	char welcoming[] = "Welcome To The";
-	char game[] = "Greatest Game Ever";
+	char game[] = "Greatest Game Ever?";
 	
 	ascii_gotoxt(1,1);
 	

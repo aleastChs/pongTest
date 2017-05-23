@@ -157,18 +157,20 @@ OBJECT p2_obj =
 PLAYER p1_player = 
 {
 	&p1_obj,
+	0,
 	0
 };
 
 PLAYER p2_player = 
 {
 	&p2_obj,
+	0,
 	0
 };
 
-P_PLAYER playerLeft  = 	&p1_player;
-P_PLAYER playerRight = 	&p2_player;
-P_OBJECT pong = &ball;
+volatile P_PLAYER playerLeft  = 	&p1_player;
+volatile P_PLAYER playerRight = 	&p2_player;
+volatile P_OBJECT pong 		  = 	&ball;
 /**************************************************************************************************************************************
 
 											FUNCTION PROTOTYPES
@@ -222,22 +224,22 @@ int main(void)
 	app_init_display();
 	app_init_keyboards();
 	
-	//graphic_initalize();
-	ascii_init();
+	graphic_initalize();
+	//ascii_init();
 	
-	//graphic_clear_screen();
+	graphic_clear_screen();
 	
-	//drawing_init();
-	ascii_clear_display();
+	drawing_init();
+	//ascii_clear_display();
 	
-	welcome();
+	//welcome();
 
-	/*
+	
 
-	while(1)
+	for(int i = 0; i <= 10; i++)
 	{
-		ping(playerLeft->p_obj, playerRight->p_obj, pong);
+		ping(playerLeft, playerRight, pong);
 		//40 milli i hårdvara
 		//delay_milli(4*delay);
-	}*/
+	}
 }

@@ -185,7 +185,6 @@ void graphic_initalize(void){
 	graphic_write_command(LCD_SET_ADD		, B_CS1 | B_CS2);
 	graphic_write_command(LCD_SET_PAGE		, B_CS1 | B_CS2);
 	select_controller(0);
-
 }
 
 void graphic_clear_screen(void){
