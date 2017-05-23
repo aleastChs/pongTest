@@ -12,14 +12,6 @@
 #include "ascii_logic.h"
 #include "player_logic.h"
 
-/*
- * GET THE POSITION OF THE PLAYER
- * 
- * IF isLeftWall == 0:			do nothing 
- * ELSE IF isLeft == 1:			add the size of x to the position
- * 
- * RETURN THE POSITION IN X
- */ 
 
 void update_ascii_display(char textTop[], char textBottom[]) 
 {
@@ -40,6 +32,25 @@ void update_ascii_display(char textTop[], char textBottom[])
 	}
 }
 
+void update_score(P_PLAYER p1, P_PLAYER p2) 
+{
+	char score1 = (char) (p1->score);
+	char score2 = (char) (p2->score);
+	
+	char p1_text[] = {'S','c','o','r','e',' ','l','e','f','t',' ','i','s',':',' ',' ',score1,'\0'};	
+	char p2_text[] = {'S','c','o','r','e',' ','r','i','g','h','t',' ','i','s',':',' ',score2,'\0'};
+	
+	update_ascii_display(p1_text, p2_text);
+}
+
+/*
+ * GET THE POSITION OF THE PLAYER
+ * 
+ * IF isLeftWall == 0:			do nothing 
+ * ELSE IF isLeft == 1:			add the size of x to the position
+ * 
+ * RETURN THE POSITION IN X
+ */ 
 uint8 get_wall_player(P_OBJECT player, uint8 isLeftWall) {
 	uint32 x;
 	
@@ -73,6 +84,23 @@ uint8 inside_y_wise(P_OBJECT object1, P_OBJECT object2) {
 	return value;
 }
 
+// Pass the ball 
+// And if toTheRight is 
+//						0:		start the ball to the left direction			
+//						1:		start the ball to the right direction
+void start_new_ball(P_OBJECT b, uint8 toTheRight)
+{
+	b->posx = 64;
+	b->posy = 20;
+	
+	b->set_speed(b	,	   -1	,	b->diry);
+	
+	if (toTheRight != 0) 
+	{
+		b->set_speed(b	,	1	,	b->diry);
+	}
+}
+
 /*
  * CHECK IF THE BALL TOUCHES PLAYER_LEFT / PLAYER_RIGHT 
  * 
@@ -81,11 +109,11 @@ uint8 inside_y_wise(P_OBJECT object1, P_OBJECT object2) {
  * 
  * CHECK IF THE BALL TOUCHES THE WALL TO THE LEFT / RIGHT  
  */ 
-void check_ball(P_OBJECT playerLeft, P_OBJECT playerRight, P_OBJECT ball)
+void check_ball(P_PLAYER playerLeft, P_PLAYER playerRight, P_OBJECT ball)
 {
-	uint8 wall_player_left = get_wall_player(playerLeft, 1);
+	uint8 wall_player_left = get_wall_player(playerLeft->p_obj, 1);
 	delay_250ns();
-	uint8 wall_player_right = get_wall_player(playerRight, 0);
+	uint8 wall_player_right = get_wall_player(playerRight->p_obj, 0);
 	delay_250ns();
 	uint8 ball_right_side_coord = (ball->posx + ball->geo->sizex);
 	uint8 ball_left_side_coord = ball->posx;
@@ -97,18 +125,18 @@ void check_ball(P_OBJECT playerLeft, P_OBJECT playerRight, P_OBJECT ball)
 	
 	if ( ball_right_side_coord >= 126) {
 		// player left gets a point
+		increaseScore(playerLeft);
 		// update ascii-display	
-		
+		update_score(playerLeft, playerRight);
 		// start a new ball
-		
-		
+		start_new_ball(ball, 0);
 	} else if (ball_left_side_coord <= 3) {
-		
 		// player right gets a point
+		increaseScore(playerRight);
 		// update ascii-display
-		
+		update_score(playerLeft, playerRight);
 		// start a new ball
-		
+		start_new_ball(ball, 1);
 	} 
 	
 // END CHECK GOAL
@@ -119,7 +147,7 @@ void check_ball(P_OBJECT playerLeft, P_OBJECT playerRight, P_OBJECT ball)
 	if (   ( ball_right_side_coord + 1)  == wall_player_right  ) 
 	{ // playerRight
 	
-		if (inside_y_wise(ball, playerRight)) 
+		if (inside_y_wise(ball, playerRight->p_obj)) 
 		{
 			ball->dirx = -(ball->dirx);
 			delay_250ns();
@@ -130,7 +158,7 @@ void check_ball(P_OBJECT playerLeft, P_OBJECT playerRight, P_OBJECT ball)
 	else if (    (ball_left_side_coord - 1) == wall_player_left ) 
 	{ // playerLeft
 		
-		if (inside_y_wise(ball, playerLeft)) 
+		if (inside_y_wise(ball, playerLeft->p_obj)) 
 		{
 			ball->dirx = -(ball->dirx);
 			delay_250ns();
@@ -201,24 +229,6 @@ void update_player_pos(P_PLAYER playerLeft, P_PLAYER playerRight)
 	}
 }
 
-
-// Pass the ball 
-// And if toTheRight is 
-//						0:		start the ball to the left direction			
-//						1:		start the ball to the right direction
-void start_new_ball(P_OBJECT b, uint8 toTheRight)
-{
-	b->posx = 64;
-	b->posy = 20;
-	
-	b->set_speed(b,-1,b->diry);
-	
-	if (toTheRight != 0) 
-	{
-		b->set_speed(b	,	1	,	b->diry);
-	}
-}
-
 /* 
  * UPDATE THE POSITION OF THE BALL
  * IF GOAL, 
@@ -229,7 +239,7 @@ void start_new_ball(P_OBJECT b, uint8 toTheRight)
  */ 
 void ping(P_PLAYER playerLeft, P_PLAYER playerRight, P_OBJECT ball) {
 	// check the postion of the ball related to the players / walls -> change direction if collision / score if goal
-	check_ball(playerLeft->p_obj, playerRight->p_obj, ball);				
+	check_ball(playerLeft, playerRight, ball);				
 	delay_micro(5);
 	//ball->move(ball);
 	delay_micro(5);
