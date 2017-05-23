@@ -60,7 +60,8 @@ uint8 inside_y_wise(P_OBJECT object1, P_OBJECT object2) {
  * 
  * CHECK IF THE BALL TOUCHES THE WALL TO THE LEFT / RIGHT  
  */ 
-void check_ball(P_OBJECT playerLeft, P_OBJECT playerRight, P_OBJECT ball){
+void check_ball(P_OBJECT playerLeft, P_OBJECT playerRight, P_OBJECT ball)
+{
 	uint8 wall_player_left = get_wall_player(playerLeft, 1);
 	uint8 wall_player_right = get_wall_player(playerRight, 0);
 	

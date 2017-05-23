@@ -9,4 +9,7 @@ typedef struct {
 	uint8 score;	
 } PLAYER, *P_PLAYER;
 
+
+void increaseScore(P_PLAYER p);
+
 #endif

@@ -216,8 +216,9 @@
   60:C:/github/pongTest/ver1\game_logic.c ****  * 
   61:C:/github/pongTest/ver1\game_logic.c ****  * CHECK IF THE BALL TOUCHES THE WALL TO THE LEFT / RIGHT  
   62:C:/github/pongTest/ver1\game_logic.c ****  */ 
-  63:C:/github/pongTest/ver1\game_logic.c **** void check_ball(P_OBJECT playerLeft, P_OBJECT playerRight, P_OBJECT ball){
- 162              		.loc 1 63 0
+  63:C:/github/pongTest/ver1\game_logic.c **** void check_ball(P_OBJECT playerLeft, P_OBJECT playerRight, P_OBJECT ball)
+  64:C:/github/pongTest/ver1\game_logic.c **** {
+ 162              		.loc 1 64 0
  163              		.cfi_startproc
  164 00a8 90B5     		push	{r4, r7, lr}
  165              		.cfi_def_cfa_offset 12
@@ -231,8 +232,8 @@
  173 00ae F860     		str	r0, [r7, #12]
  174 00b0 B960     		str	r1, [r7, #8]
  175 00b2 7A60     		str	r2, [r7, #4]
-  64:C:/github/pongTest/ver1\game_logic.c **** 	uint8 wall_player_left = get_wall_player(playerLeft, 1);
- 176              		.loc 1 64 0
+  65:C:/github/pongTest/ver1\game_logic.c **** 	uint8 wall_player_left = get_wall_player(playerLeft, 1);
+ 176              		.loc 1 65 0
  177 00b4 1723     		movs	r3, #23
  178 00b6 FC18     		adds	r4, r7, r3
  179 00b8 FB68     		ldr	r3, [r7, #12]
@@ -241,8 +242,8 @@
  182 00be FFF7FEFF 		bl	get_wall_player
  183 00c2 0300     		movs	r3, r0
  184 00c4 2370     		strb	r3, [r4]
-  65:C:/github/pongTest/ver1\game_logic.c **** 	uint8 wall_player_right = get_wall_player(playerRight, 0);
- 185              		.loc 1 65 0
+  66:C:/github/pongTest/ver1\game_logic.c **** 	uint8 wall_player_right = get_wall_player(playerRight, 0);
+ 185              		.loc 1 66 0
  186 00c6 1623     		movs	r3, #22
  187 00c8 FC18     		adds	r4, r7, r3
  188 00ca BB68     		ldr	r3, [r7, #8]
@@ -251,9 +252,9 @@
  191 00d0 FFF7FEFF 		bl	get_wall_player
  192 00d4 0300     		movs	r3, r0
  193 00d6 2370     		strb	r3, [r4]
-  66:C:/github/pongTest/ver1\game_logic.c **** 	
-  67:C:/github/pongTest/ver1\game_logic.c **** 	uint8 ball_right_side_coord = (ball->posx + ball->geo->sizex);
- 194              		.loc 1 67 0
+  67:C:/github/pongTest/ver1\game_logic.c **** 	
+  68:C:/github/pongTest/ver1\game_logic.c **** 	uint8 ball_right_side_coord = (ball->posx + ball->geo->sizex);
+ 194              		.loc 1 68 0
  195 00d8 7B68     		ldr	r3, [r7, #4]
  196 00da DB68     		ldr	r3, [r3, #12]
  197 00dc D9B2     		uxtb	r1, r3
@@ -265,22 +266,22 @@
  203 00e8 FB18     		adds	r3, r7, r3
  204 00ea 8A18     		adds	r2, r1, r2
  205 00ec 1A70     		strb	r2, [r3]
-  68:C:/github/pongTest/ver1\game_logic.c **** 	uint8 ball_left_side_coord = ball->posx;
- 206              		.loc 1 68 0
+  69:C:/github/pongTest/ver1\game_logic.c **** 	uint8 ball_left_side_coord = ball->posx;
+ 206              		.loc 1 69 0
  207 00ee 7B68     		ldr	r3, [r7, #4]
  208 00f0 DA68     		ldr	r2, [r3, #12]
  209 00f2 1423     		movs	r3, #20
  210 00f4 FB18     		adds	r3, r7, r3
  211 00f6 1A70     		strb	r2, [r3]
-  69:C:/github/pongTest/ver1\game_logic.c **** 	uint8 ball_top_coord = ball->posy;
- 212              		.loc 1 69 0
+  70:C:/github/pongTest/ver1\game_logic.c **** 	uint8 ball_top_coord = ball->posy;
+ 212              		.loc 1 70 0
  213 00f8 7B68     		ldr	r3, [r7, #4]
  214 00fa 1A69     		ldr	r2, [r3, #16]
  215 00fc 1323     		movs	r3, #19
  216 00fe FB18     		adds	r3, r7, r3
  217 0100 1A70     		strb	r2, [r3]
-  70:C:/github/pongTest/ver1\game_logic.c **** 	uint8 ball_bottom_coord = ball->posy + ball->geo->sizey;
- 218              		.loc 1 70 0
+  71:C:/github/pongTest/ver1\game_logic.c **** 	uint8 ball_bottom_coord = ball->posy + ball->geo->sizey;
+ 218              		.loc 1 71 0
  219 0102 7B68     		ldr	r3, [r7, #4]
  220 0104 1B69     		ldr	r3, [r3, #16]
  221 0106 D9B2     		uxtb	r1, r3
@@ -292,32 +293,32 @@
  227 0112 FB18     		adds	r3, r7, r3
  228 0114 8A18     		adds	r2, r1, r2
  229 0116 1A70     		strb	r2, [r3]
-  71:C:/github/pongTest/ver1\game_logic.c **** 	
-  72:C:/github/pongTest/ver1\game_logic.c **** // CHECK IF GOAL!!!
-  73:C:/github/pongTest/ver1\game_logic.c **** 	
-  74:C:/github/pongTest/ver1\game_logic.c **** 	if ( ball_right_side_coord >= 126) {
-  75:C:/github/pongTest/ver1\game_logic.c **** 		// player left gets a point
-  76:C:/github/pongTest/ver1\game_logic.c **** 		// update ascii-display	
-  77:C:/github/pongTest/ver1\game_logic.c **** 		
-  78:C:/github/pongTest/ver1\game_logic.c **** 		// start a new ball
-  79:C:/github/pongTest/ver1\game_logic.c **** 		
+  72:C:/github/pongTest/ver1\game_logic.c **** 	
+  73:C:/github/pongTest/ver1\game_logic.c **** // CHECK IF GOAL!!!
+  74:C:/github/pongTest/ver1\game_logic.c **** 	
+  75:C:/github/pongTest/ver1\game_logic.c **** 	if ( ball_right_side_coord >= 126) {
+  76:C:/github/pongTest/ver1\game_logic.c **** 		// player left gets a point
+  77:C:/github/pongTest/ver1\game_logic.c **** 		// update ascii-display	
+  78:C:/github/pongTest/ver1\game_logic.c **** 		
+  79:C:/github/pongTest/ver1\game_logic.c **** 		// start a new ball
   80:C:/github/pongTest/ver1\game_logic.c **** 		
-  81:C:/github/pongTest/ver1\game_logic.c **** 	} else if (ball_left_side_coord <= 3) {
-  82:C:/github/pongTest/ver1\game_logic.c **** 		
-  83:C:/github/pongTest/ver1\game_logic.c **** 		// player right gets a point
-  84:C:/github/pongTest/ver1\game_logic.c **** 		// update ascii-display
-  85:C:/github/pongTest/ver1\game_logic.c **** 		
-  86:C:/github/pongTest/ver1\game_logic.c **** 		// start a new ball
-  87:C:/github/pongTest/ver1\game_logic.c **** 		
-  88:C:/github/pongTest/ver1\game_logic.c **** 	} 
-  89:C:/github/pongTest/ver1\game_logic.c **** 	
-  90:C:/github/pongTest/ver1\game_logic.c **** // END CHECK GOAL
-  91:C:/github/pongTest/ver1\game_logic.c **** 
+  81:C:/github/pongTest/ver1\game_logic.c **** 		
+  82:C:/github/pongTest/ver1\game_logic.c **** 	} else if (ball_left_side_coord <= 3) {
+  83:C:/github/pongTest/ver1\game_logic.c **** 		
+  84:C:/github/pongTest/ver1\game_logic.c **** 		// player right gets a point
+  85:C:/github/pongTest/ver1\game_logic.c **** 		// update ascii-display
+  86:C:/github/pongTest/ver1\game_logic.c **** 		
+  87:C:/github/pongTest/ver1\game_logic.c **** 		// start a new ball
+  88:C:/github/pongTest/ver1\game_logic.c **** 		
+  89:C:/github/pongTest/ver1\game_logic.c **** 	} 
+  90:C:/github/pongTest/ver1\game_logic.c **** 	
+  91:C:/github/pongTest/ver1\game_logic.c **** // END CHECK GOAL
   92:C:/github/pongTest/ver1\game_logic.c **** 
-  93:C:/github/pongTest/ver1\game_logic.c **** // CHECK WALLS PLAYERS
-  94:C:/github/pongTest/ver1\game_logic.c **** 	
-  95:C:/github/pongTest/ver1\game_logic.c **** 	if (   ( ball_right_side_coord + 1)  == wall_player_right  ) 
- 230              		.loc 1 95 0
+  93:C:/github/pongTest/ver1\game_logic.c **** 
+  94:C:/github/pongTest/ver1\game_logic.c **** // CHECK WALLS PLAYERS
+  95:C:/github/pongTest/ver1\game_logic.c **** 	
+  96:C:/github/pongTest/ver1\game_logic.c **** 	if (   ( ball_right_side_coord + 1)  == wall_player_right  ) 
+ 230              		.loc 1 96 0
  231 0118 1523     		movs	r3, #21
  232 011a FB18     		adds	r3, r7, r3
  233 011c 1B78     		ldrb	r3, [r3]
@@ -327,10 +328,10 @@
  237 0124 1B78     		ldrb	r3, [r3]
  238 0126 9A42     		cmp	r2, r3
  239 0128 16D1     		bne	.L8
-  96:C:/github/pongTest/ver1\game_logic.c **** 	{ // playerRight
-  97:C:/github/pongTest/ver1\game_logic.c **** 	
-  98:C:/github/pongTest/ver1\game_logic.c **** 		if (inside_y_wise(ball, playerRight)) 
- 240              		.loc 1 98 0
+  97:C:/github/pongTest/ver1\game_logic.c **** 	{ // playerRight
+  98:C:/github/pongTest/ver1\game_logic.c **** 	
+  99:C:/github/pongTest/ver1\game_logic.c **** 		if (inside_y_wise(ball, playerRight)) 
+ 240              		.loc 1 99 0
  241 012a BA68     		ldr	r2, [r7, #8]
  242 012c 7B68     		ldr	r3, [r7, #4]
  243 012e 1100     		movs	r1, r2
@@ -338,16 +339,16 @@
  245 0132 FFF7FEFF 		bl	inside_y_wise
  246 0136 031E     		subs	r3, r0, #0
  247 0138 29D0     		beq	.L10
-  99:C:/github/pongTest/ver1\game_logic.c **** 		{
- 100:C:/github/pongTest/ver1\game_logic.c **** 			ball->dirx = -(ball->dirx);
- 248              		.loc 1 100 0
+ 100:C:/github/pongTest/ver1\game_logic.c **** 		{
+ 101:C:/github/pongTest/ver1\game_logic.c **** 			ball->dirx = -(ball->dirx);
+ 248              		.loc 1 101 0
  249 013a 7B68     		ldr	r3, [r7, #4]
  250 013c 5B68     		ldr	r3, [r3, #4]
  251 013e 5A42     		rsbs	r2, r3, #0
  252 0140 7B68     		ldr	r3, [r7, #4]
  253 0142 5A60     		str	r2, [r3, #4]
- 101:C:/github/pongTest/ver1\game_logic.c **** 			ball->posx = wall_player_right - ball->geo->sizex;
- 254              		.loc 1 101 0
+ 102:C:/github/pongTest/ver1\game_logic.c **** 			ball->posx = wall_player_right - ball->geo->sizex;
+ 254              		.loc 1 102 0
  255 0144 1623     		movs	r3, #22
  256 0146 FB18     		adds	r3, r7, r3
  257 0148 1A78     		ldrb	r2, [r3]
@@ -359,11 +360,11 @@
  263 0154 DA60     		str	r2, [r3, #12]
  264 0156 1AE0     		b	.L10
  265              	.L8:
- 102:C:/github/pongTest/ver1\game_logic.c **** 		}
- 103:C:/github/pongTest/ver1\game_logic.c **** 		
- 104:C:/github/pongTest/ver1\game_logic.c **** 	} 
- 105:C:/github/pongTest/ver1\game_logic.c **** 	else if (    (ball_left_side_coord - 1) == wall_player_left ) 
- 266              		.loc 1 105 0
+ 103:C:/github/pongTest/ver1\game_logic.c **** 		}
+ 104:C:/github/pongTest/ver1\game_logic.c **** 		
+ 105:C:/github/pongTest/ver1\game_logic.c **** 	} 
+ 106:C:/github/pongTest/ver1\game_logic.c **** 	else if (    (ball_left_side_coord - 1) == wall_player_left ) 
+ 266              		.loc 1 106 0
  267 0158 1423     		movs	r3, #20
  268 015a FB18     		adds	r3, r7, r3
  269 015c 1B78     		ldrb	r3, [r3]
@@ -373,10 +374,10 @@
  273 0164 1B78     		ldrb	r3, [r3]
  274 0166 9A42     		cmp	r2, r3
  275 0168 11D1     		bne	.L10
- 106:C:/github/pongTest/ver1\game_logic.c **** 	{ // playerLeft
- 107:C:/github/pongTest/ver1\game_logic.c **** 		
- 108:C:/github/pongTest/ver1\game_logic.c **** 		if (inside_y_wise(ball, playerLeft)) 
- 276              		.loc 1 108 0
+ 107:C:/github/pongTest/ver1\game_logic.c **** 	{ // playerLeft
+ 108:C:/github/pongTest/ver1\game_logic.c **** 		
+ 109:C:/github/pongTest/ver1\game_logic.c **** 		if (inside_y_wise(ball, playerLeft)) 
+ 276              		.loc 1 109 0
  277 016a FA68     		ldr	r2, [r7, #12]
  278 016c 7B68     		ldr	r3, [r7, #4]
  279 016e 1100     		movs	r1, r2
@@ -384,72 +385,72 @@
  281 0172 FFF7FEFF 		bl	inside_y_wise
  282 0176 031E     		subs	r3, r0, #0
  283 0178 09D0     		beq	.L10
- 109:C:/github/pongTest/ver1\game_logic.c **** 		{
- 110:C:/github/pongTest/ver1\game_logic.c **** 			ball->dirx = -(ball->dirx);
- 284              		.loc 1 110 0
+ 110:C:/github/pongTest/ver1\game_logic.c **** 		{
+ 111:C:/github/pongTest/ver1\game_logic.c **** 			ball->dirx = -(ball->dirx);
+ 284              		.loc 1 111 0
  285 017a 7B68     		ldr	r3, [r7, #4]
  286 017c 5B68     		ldr	r3, [r3, #4]
  287 017e 5A42     		rsbs	r2, r3, #0
  288 0180 7B68     		ldr	r3, [r7, #4]
  289 0182 5A60     		str	r2, [r3, #4]
- 111:C:/github/pongTest/ver1\game_logic.c **** 			ball->posx = wall_player_left;
- 290              		.loc 1 111 0
+ 112:C:/github/pongTest/ver1\game_logic.c **** 			ball->posx = wall_player_left;
+ 290              		.loc 1 112 0
  291 0184 1723     		movs	r3, #23
  292 0186 FB18     		adds	r3, r7, r3
  293 0188 1A78     		ldrb	r2, [r3]
  294 018a 7B68     		ldr	r3, [r7, #4]
  295 018c DA60     		str	r2, [r3, #12]
  296              	.L10:
- 112:C:/github/pongTest/ver1\game_logic.c **** 		}
- 113:C:/github/pongTest/ver1\game_logic.c **** 		
- 114:C:/github/pongTest/ver1\game_logic.c **** 	}
- 115:C:/github/pongTest/ver1\game_logic.c **** // END CHECK WALLS PLAYERS
- 116:C:/github/pongTest/ver1\game_logic.c **** 	
+ 113:C:/github/pongTest/ver1\game_logic.c **** 		}
+ 114:C:/github/pongTest/ver1\game_logic.c **** 		
+ 115:C:/github/pongTest/ver1\game_logic.c **** 	}
+ 116:C:/github/pongTest/ver1\game_logic.c **** // END CHECK WALLS PLAYERS
  117:C:/github/pongTest/ver1\game_logic.c **** 	
- 118:C:/github/pongTest/ver1\game_logic.c **** // CHECK FLOOR / BOTTOM
- 119:C:/github/pongTest/ver1\game_logic.c **** 	if (ball_top_coord <= 2) 
- 297              		.loc 1 119 0
+ 118:C:/github/pongTest/ver1\game_logic.c **** 	
+ 119:C:/github/pongTest/ver1\game_logic.c **** // CHECK FLOOR / BOTTOM
+ 120:C:/github/pongTest/ver1\game_logic.c **** 	if (ball_top_coord <= 2) 
+ 297              		.loc 1 120 0
  298 018e 1323     		movs	r3, #19
  299 0190 FB18     		adds	r3, r7, r3
  300 0192 1B78     		ldrb	r3, [r3]
  301 0194 022B     		cmp	r3, #2
  302 0196 05D8     		bhi	.L11
- 120:C:/github/pongTest/ver1\game_logic.c **** 	{
- 121:C:/github/pongTest/ver1\game_logic.c **** 		ball->diry = -(ball->diry);
- 303              		.loc 1 121 0
+ 121:C:/github/pongTest/ver1\game_logic.c **** 	{
+ 122:C:/github/pongTest/ver1\game_logic.c **** 		ball->diry = -(ball->diry);
+ 303              		.loc 1 122 0
  304 0198 7B68     		ldr	r3, [r7, #4]
  305 019a 9B68     		ldr	r3, [r3, #8]
  306 019c 5A42     		rsbs	r2, r3, #0
  307 019e 7B68     		ldr	r3, [r7, #4]
  308 01a0 9A60     		str	r2, [r3, #8]
- 122:C:/github/pongTest/ver1\game_logic.c **** 	} 
- 123:C:/github/pongTest/ver1\game_logic.c **** 	else if( ball_bottom_coord >= 62) 
- 124:C:/github/pongTest/ver1\game_logic.c **** 	{
- 125:C:/github/pongTest/ver1\game_logic.c **** 		ball->diry = -(ball->diry);
- 126:C:/github/pongTest/ver1\game_logic.c **** 	}
- 127:C:/github/pongTest/ver1\game_logic.c **** // END CHECK FLOOR / BOTTOM	
- 128:C:/github/pongTest/ver1\game_logic.c **** 	
- 129:C:/github/pongTest/ver1\game_logic.c **** 
- 130:C:/github/pongTest/ver1\game_logic.c **** }
- 309              		.loc 1 130 0
+ 123:C:/github/pongTest/ver1\game_logic.c **** 	} 
+ 124:C:/github/pongTest/ver1\game_logic.c **** 	else if( ball_bottom_coord >= 62) 
+ 125:C:/github/pongTest/ver1\game_logic.c **** 	{
+ 126:C:/github/pongTest/ver1\game_logic.c **** 		ball->diry = -(ball->diry);
+ 127:C:/github/pongTest/ver1\game_logic.c **** 	}
+ 128:C:/github/pongTest/ver1\game_logic.c **** // END CHECK FLOOR / BOTTOM	
+ 129:C:/github/pongTest/ver1\game_logic.c **** 	
+ 130:C:/github/pongTest/ver1\game_logic.c **** 
+ 131:C:/github/pongTest/ver1\game_logic.c **** }
+ 309              		.loc 1 131 0
  310 01a2 09E0     		b	.L13
  311              	.L11:
- 123:C:/github/pongTest/ver1\game_logic.c **** 	{
- 312              		.loc 1 123 0
+ 124:C:/github/pongTest/ver1\game_logic.c **** 	{
+ 312              		.loc 1 124 0
  313 01a4 1223     		movs	r3, #18
  314 01a6 FB18     		adds	r3, r7, r3
  315 01a8 1B78     		ldrb	r3, [r3]
  316 01aa 3D2B     		cmp	r3, #61
  317 01ac 04D9     		bls	.L13
- 125:C:/github/pongTest/ver1\game_logic.c **** 	}
- 318              		.loc 1 125 0
+ 126:C:/github/pongTest/ver1\game_logic.c **** 	}
+ 318              		.loc 1 126 0
  319 01ae 7B68     		ldr	r3, [r7, #4]
  320 01b0 9B68     		ldr	r3, [r3, #8]
  321 01b2 5A42     		rsbs	r2, r3, #0
  322 01b4 7B68     		ldr	r3, [r7, #4]
  323 01b6 9A60     		str	r2, [r3, #8]
  324              	.L13:
- 325              		.loc 1 130 0
+ 325              		.loc 1 131 0
  326 01b8 C046     		nop
  327 01ba BD46     		mov	sp, r7
  328 01bc 07B0     		add	sp, sp, #28
@@ -463,18 +464,18 @@
  337              		.thumb_func
  339              	ping:
  340              	.LFB3:
- 131:C:/github/pongTest/ver1\game_logic.c **** 
  132:C:/github/pongTest/ver1\game_logic.c **** 
- 133:C:/github/pongTest/ver1\game_logic.c **** /* 
- 134:C:/github/pongTest/ver1\game_logic.c ****  * UPDATE THE POSITION OF THE BALL
- 135:C:/github/pongTest/ver1\game_logic.c ****  * IF GOAL, 
- 136:C:/github/pongTest/ver1\game_logic.c ****  * 						PRINT SCORE TO THE PLAYER 
- 137:C:/github/pongTest/ver1\game_logic.c ****  * IF KEYBOARD_PRESSED, 
- 138:C:/github/pongTest/ver1\game_logic.c ****  * 						MOVE THE PLAYER
- 139:C:/github/pongTest/ver1\game_logic.c ****  * RENDER THE SCREEN
- 140:C:/github/pongTest/ver1\game_logic.c ****  */ 
- 141:C:/github/pongTest/ver1\game_logic.c **** void ping(P_OBJECT playerLeft, P_OBJECT playerRight, P_OBJECT ball) {
- 341              		.loc 1 141 0
+ 133:C:/github/pongTest/ver1\game_logic.c **** 
+ 134:C:/github/pongTest/ver1\game_logic.c **** /* 
+ 135:C:/github/pongTest/ver1\game_logic.c ****  * UPDATE THE POSITION OF THE BALL
+ 136:C:/github/pongTest/ver1\game_logic.c ****  * IF GOAL, 
+ 137:C:/github/pongTest/ver1\game_logic.c ****  * 						PRINT SCORE TO THE PLAYER 
+ 138:C:/github/pongTest/ver1\game_logic.c ****  * IF KEYBOARD_PRESSED, 
+ 139:C:/github/pongTest/ver1\game_logic.c ****  * 						MOVE THE PLAYER
+ 140:C:/github/pongTest/ver1\game_logic.c ****  * RENDER THE SCREEN
+ 141:C:/github/pongTest/ver1\game_logic.c ****  */ 
+ 142:C:/github/pongTest/ver1\game_logic.c **** void ping(P_OBJECT playerLeft, P_OBJECT playerRight, P_OBJECT ball) {
+ 341              		.loc 1 142 0
  342              		.cfi_startproc
  343 01c0 80B5     		push	{r7, lr}
  344              		.cfi_def_cfa_offset 8
@@ -487,46 +488,46 @@
  351 01c6 F860     		str	r0, [r7, #12]
  352 01c8 B960     		str	r1, [r7, #8]
  353 01ca 7A60     		str	r2, [r7, #4]
- 142:C:/github/pongTest/ver1\game_logic.c **** 	// check the postion of the ball related to the players / walls -> change direction if collision /
- 143:C:/github/pongTest/ver1\game_logic.c **** 	check_ball(playerLeft, playerRight, ball);				
- 354              		.loc 1 143 0
+ 143:C:/github/pongTest/ver1\game_logic.c **** 	// check the postion of the ball related to the players / walls -> change direction if collision /
+ 144:C:/github/pongTest/ver1\game_logic.c **** 	check_ball(playerLeft, playerRight, ball);				
+ 354              		.loc 1 144 0
  355 01cc 7A68     		ldr	r2, [r7, #4]
  356 01ce B968     		ldr	r1, [r7, #8]
  357 01d0 FB68     		ldr	r3, [r7, #12]
  358 01d2 1800     		movs	r0, r3
  359 01d4 FFF7FEFF 		bl	check_ball
- 144:C:/github/pongTest/ver1\game_logic.c **** 	
- 145:C:/github/pongTest/ver1\game_logic.c **** 	ball->move(ball);
- 360              		.loc 1 145 0
+ 145:C:/github/pongTest/ver1\game_logic.c **** 	
+ 146:C:/github/pongTest/ver1\game_logic.c **** 	ball->move(ball);
+ 360              		.loc 1 146 0
  361 01d8 7B68     		ldr	r3, [r7, #4]
  362 01da DB69     		ldr	r3, [r3, #28]
  363 01dc 7A68     		ldr	r2, [r7, #4]
  364 01de 1000     		movs	r0, r2
  365 01e0 9847     		blx	r3
- 146:C:/github/pongTest/ver1\game_logic.c **** 	
- 147:C:/github/pongTest/ver1\game_logic.c **** 	// read keyboard left
- 148:C:/github/pongTest/ver1\game_logic.c **** 	// if:		 2_IS_PRESSED 
- 149:C:/github/pongTest/ver1\game_logic.c **** 	//					playerLeft->set_speed(0,1);
- 150:C:/github/pongTest/ver1\game_logic.c **** 	//			CHECK IF ENABLE TO MOVE
- 151:C:/github/pongTest/ver1\game_logic.c **** 	//									THEN DRAW
- 152:C:/github/pongTest/ver1\game_logic.c **** 	// else if:	 0_IS_PRESSED 
- 153:C:/github/pongTest/ver1\game_logic.c **** 	//					playerLeft->set_speed(0,-1);
- 154:C:/github/pongTest/ver1\game_logic.c **** 	//			CHECK IF ENABLE TO MOVE
- 155:C:/github/pongTest/ver1\game_logic.c **** 	//									THEN DRAW
- 156:C:/github/pongTest/ver1\game_logic.c **** 	
- 157:C:/github/pongTest/ver1\game_logic.c **** 	// read keyboard right
- 158:C:/github/pongTest/ver1\game_logic.c **** 	// if:		2_IS_PRESSED 
- 159:C:/github/pongTest/ver1\game_logic.c **** 	//					playerRight->set_speed(0,1);
- 160:C:/github/pongTest/ver1\game_logic.c **** 	//			CHECK IF ENABLE TO MOVE
- 161:C:/github/pongTest/ver1\game_logic.c **** 	//									THEN DRAW
- 162:C:/github/pongTest/ver1\game_logic.c **** 	// else if:	 0_IS_PRESSED 
- 163:C:/github/pongTest/ver1\game_logic.c **** 	//					playerRight->set_speed(0,-1);
- 164:C:/github/pongTest/ver1\game_logic.c **** 	//			CHECK IF ENABLE TO MOVE
- 165:C:/github/pongTest/ver1\game_logic.c **** 	//									THEN DRAW
- 166:C:/github/pongTest/ver1\game_logic.c **** 	
+ 147:C:/github/pongTest/ver1\game_logic.c **** 	
+ 148:C:/github/pongTest/ver1\game_logic.c **** 	// read keyboard left
+ 149:C:/github/pongTest/ver1\game_logic.c **** 	// if:		 2_IS_PRESSED 
+ 150:C:/github/pongTest/ver1\game_logic.c **** 	//					playerLeft->set_speed(0,1);
+ 151:C:/github/pongTest/ver1\game_logic.c **** 	//			CHECK IF ENABLE TO MOVE
+ 152:C:/github/pongTest/ver1\game_logic.c **** 	//									THEN DRAW
+ 153:C:/github/pongTest/ver1\game_logic.c **** 	// else if:	 0_IS_PRESSED 
+ 154:C:/github/pongTest/ver1\game_logic.c **** 	//					playerLeft->set_speed(0,-1);
+ 155:C:/github/pongTest/ver1\game_logic.c **** 	//			CHECK IF ENABLE TO MOVE
+ 156:C:/github/pongTest/ver1\game_logic.c **** 	//									THEN DRAW
+ 157:C:/github/pongTest/ver1\game_logic.c **** 	
+ 158:C:/github/pongTest/ver1\game_logic.c **** 	// read keyboard right
+ 159:C:/github/pongTest/ver1\game_logic.c **** 	// if:		2_IS_PRESSED 
+ 160:C:/github/pongTest/ver1\game_logic.c **** 	//					playerRight->set_speed(0,1);
+ 161:C:/github/pongTest/ver1\game_logic.c **** 	//			CHECK IF ENABLE TO MOVE
+ 162:C:/github/pongTest/ver1\game_logic.c **** 	//									THEN DRAW
+ 163:C:/github/pongTest/ver1\game_logic.c **** 	// else if:	 0_IS_PRESSED 
+ 164:C:/github/pongTest/ver1\game_logic.c **** 	//					playerRight->set_speed(0,-1);
+ 165:C:/github/pongTest/ver1\game_logic.c **** 	//			CHECK IF ENABLE TO MOVE
+ 166:C:/github/pongTest/ver1\game_logic.c **** 	//									THEN DRAW
  167:C:/github/pongTest/ver1\game_logic.c **** 	
- 168:C:/github/pongTest/ver1\game_logic.c **** }...
- 366              		.loc 1 168 0
+ 168:C:/github/pongTest/ver1\game_logic.c **** 	
+ 169:C:/github/pongTest/ver1\game_logic.c **** }...
+ 366              		.loc 1 169 0
  367 01e2 C046     		nop
  368 01e4 BD46     		mov	sp, r7
  369 01e6 04B0     		add	sp, sp, #16
