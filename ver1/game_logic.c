@@ -4,6 +4,7 @@
  * 
  */ 
 
+#include <string.h>
 #include "standard_types.h"
 #include "keyboard_logic.h"
 #include "geometry.h"
@@ -17,7 +18,7 @@
 // Parameters : 
 // 				char textTop[] 		- Array of chars (ex = "Hello")		- Prints out on the LCD - TOP -LINE		
 // 				char textBottom[] 	- Array of chars (ex = "Hello")		- Prints out on the LCD - BOTTOM -LINE
-void update_ascii_display(char textTop[], char textBottom[]) 
+void update_ascii_display(char textTop[], char textBottom[], uint8 delayMs) 
 {
 	char *str;
 	
@@ -27,24 +28,40 @@ void update_ascii_display(char textTop[], char textBottom[])
 	
 	while(*str) {
 		ascii_write_char(*str++);
+		delay_micro(delayMs);
 	}
 	ascii_gotoxt(1,2);
 	str = textBottom;
 	
 	while(*str) {
 		ascii_write_char(*str++);
+		delay_micro(delayMs);
 	}
+}
+
+void append(char *s, char c) {
+	int len = strlen(s);
+	s[len] = c,
+	s[len+1] = '\0';
 }
 
 void update_score(P_PLAYER p1, P_PLAYER p2) 
 {
-	char score1 = (char) (p1->score);
-	char score2 = (char) (p2->score);
+	uint32 score1 = (int) (p1->score);
+	uint32 score2 = (int) (p2->score);
 	
-	char p1_text[] = {'S','c','o','r','e',' ','l','e','f','t',' ','i','s',':',' ',' ',score1,'\0'};	
+	char *p1_text_ptr = "Score Left is:   ";
+	char *p2_text_ptr = "Score Right is:  ";
+	
+	append(p1_text_ptr, score1);
+	append(p2_text_ptr, score2);
+	
+	char p1_text[] = {'S','c','o','r','e',' ','l','e','f','t',' ','i','s',':',' ',' ',' ','\0'};	
 	char p2_text[] = {'S','c','o','r','e',' ','r','i','g','h','t',' ','i','s',':',' ',score2,'\0'};
 	
-	update_ascii_display(p1_text, p2_text);
+	ascii_clear_display();
+	
+	update_ascii_display(p1_text_ptr, p2_text_ptr, 0);
 }
 
 /*
@@ -132,15 +149,22 @@ void check_ball(P_PLAYER playerLeft, P_PLAYER playerRight, P_OBJECT ball)
 		increaseScore(playerLeft);
 		// update ascii-display	
 		update_score(playerLeft, playerRight);
+		
+		delay_micro(100);
+		
 		// start a new ball
 		start_new_ball(ball, 0);
+		ball->clear(ball);
 	} else if (ball_left_side_coord <= 3) {
 		// player right gets a point
 		increaseScore(playerRight);
 		// update ascii-display
 		update_score(playerLeft, playerRight);
+		
+		delay_micro(100);
 		// start a new ball
 		start_new_ball(ball, 1);
+		ball->clear(ball);
 	} 
 	
 // END CHECK GOAL
@@ -244,15 +268,27 @@ void update_player_pos(P_PLAYER playerLeft, P_PLAYER playerRight)
 void ping(P_PLAYER playerLeft, P_PLAYER playerRight, P_OBJECT ball) {
 	// check the postion of the ball related to the players / walls -> change direction if collision / score if goal
 	check_ball(playerLeft, playerRight, ball);				
-	delay_micro(5);
-	//ball->move(ball);
-	delay_micro(5);
+	ball->move(ball);
 	update_player_pos(playerLeft,playerRight);
 }
 
 void welcome(void) {
-	char welcoming[] = "Welcome To The";
+	ascii_init();
+	
+	ascii_display_controll(8);
+	char welcoming[] = "  Welcome To The";
 	char game[] = "Greatest Game Ever?";
 	
-	update_ascii_display(welcoming, game);
+	update_ascii_display(welcoming, game,4);
+	
+	delay_micro(400);
+	
+	get_ready();
+}
+
+void get_ready(void) {	
+	char are[] 	= "     ARE YOU";
+	char ready[] 		= "       READY?";
+	
+	update_ascii_display(are, ready, 50);	
 }

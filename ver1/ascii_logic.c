@@ -246,8 +246,11 @@ void ascii_init(void)
 	
 	
 	ascii_write_cmd(0x4);
-	//ascii_entry_mode_set(1);
+	//ascii_entry_mode_set(1); 
+	//or
+	//ascii_entry_mode_set(2);
+	
 	ascii_write_cmd(0x02);	// return home
 	
-	//ascii_entry_mode_set(2);
+	
 }

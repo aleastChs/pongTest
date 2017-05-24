@@ -1,59 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Session Name="C:\github\pongTest\pong.workspace">
+<Session Name="C:\Users\aleast\github\pongTest\pong.workspace">
   <int Value="0" Name="m_selectedTab"/>
-  <wxString Value="C:\github\pongTest\pong.workspace" Name="m_workspaceName"/>
+  <wxString Value="C:\Users\aleast\github\pongTest\pong.workspace" Name="m_workspaceName"/>
   <TabInfoArray Name="TabInfoArray">
     <TabInfo>
-      <wxString Value="C:\github\pongTest\ver1\startup.c" Name="FileName"/>
-      <int Value="219" Name="FirstVisibleLine"/>
-      <int Value="224" Name="CurrentLine"/>
-      <wxArrayString Name="Bookmarks"/>
+      <wxString Value="C:\Users\aleast\github\pongTest\ver1\startup.c" Name="FileName"/>
+      <int Value="225" Name="FirstVisibleLine"/>
+      <int Value="236" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks">
+        <wxString Value="236:3"/>
+      </wxArrayString>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>
     <TabInfo>
-      <wxString Value="C:\github\pongTest\ver1\game_logic.c" Name="FileName"/>
-      <int Value="193" Name="FirstVisibleLine"/>
-      <int Value="209" Name="CurrentLine"/>
-      <wxArrayString Name="Bookmarks"/>
+      <wxString Value="C:\Users\aleast\github\pongTest\ver1\game_logic.c" Name="FileName"/>
+      <int Value="265" Name="FirstVisibleLine"/>
+      <int Value="293" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks">
+        <wxString Value="163:3"/>
+        <wxString Value="283:3"/>
+      </wxArrayString>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>
     <TabInfo>
-      <wxString Value="C:\github\pongTest\ver1\game_logic.h" Name="FileName"/>
-      <int Value="0" Name="FirstVisibleLine"/>
-      <int Value="12" Name="CurrentLine"/>
-      <wxArrayString Name="Bookmarks"/>
-      <IntVector Name="CollapsedFolds"/>
-    </TabInfo>
-    <TabInfo>
-      <wxString Value="C:\github\pongTest\ver1\display_logic.c" Name="FileName"/>
-      <int Value="20" Name="FirstVisibleLine"/>
-      <int Value="30" Name="CurrentLine"/>
-      <wxArrayString Name="Bookmarks"/>
-      <IntVector Name="CollapsedFolds"/>
-    </TabInfo>
-    <TabInfo>
-      <wxString Value="C:\github\pongTest\ver1\keyboard_logic.c" Name="FileName"/>
+      <wxString Value="C:\Users\aleast\github\pongTest\ver1\ascii_logic.c" Name="FileName"/>
       <int Value="35" Name="FirstVisibleLine"/>
-      <int Value="45" Name="CurrentLine"/>
+      <int Value="88" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>
     <TabInfo>
-      <wxString Value="C:\github\pongTest\ver1\player_logic.h" Name="FileName"/>
-      <int Value="0" Name="FirstVisibleLine"/>
-      <int Value="9" Name="CurrentLine"/>
+      <wxString Value="C:\Users\aleast\github\pongTest\ver1\game_logic.h" Name="FileName"/>
+      <int Value="7" Name="FirstVisibleLine"/>
+      <int Value="14" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>
     <TabInfo>
-      <wxString Value="C:\github\pongTest\ver1\keyboard_logic.h" Name="FileName"/>
+      <wxString Value="C:\Users\aleast\github\pongTest\ver1\player_logic.c" Name="FileName"/>
+      <int Value="4" Name="FirstVisibleLine"/>
+      <int Value="6" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="C:\Users\aleast\github\pongTest\ver1\display_logic.c" Name="FileName"/>
+      <int Value="142" Name="FirstVisibleLine"/>
+      <int Value="7" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="C:\Users\aleast\github\pongTest\ver1\geometry.c" Name="FileName"/>
       <int Value="6" Name="FirstVisibleLine"/>
-      <int Value="13" Name="CurrentLine"/>
+      <int Value="6" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>
   </TabInfoArray>
   <SerializedObject Name="m_breakpoints">
-    <long Value="0" Name="Count"/>
+    <long Value="2" Name="Count"/>
+    <SerializedObject Name="Breakpoint0">
+      <wxString Value="C:\Users\aleast\github\pongTest\ver1\game_logic.c" Name="file"/>
+      <int Value="160" Name="lineno"/>
+      <wxString Value="" Name="function_name"/>
+      <wxString Value="" Name="memory_address"/>
+      <int Value="1" Name="bp_type"/>
+      <int Value="0" Name="watchpoint_type"/>
+      <wxString Value="" Name="watchpt_data"/>
+      <CData Name="commandlist"/>
+      <bool Value="0" Name="regex"/>
+      <bool Value="0" Name="is_temp"/>
+      <bool Value="1" Name="is_enabled"/>
+      <int Value="0" Name="ignore_number"/>
+      <wxString Value="" Name="conditions"/>
+      <int Value="0" Name="origin"/>
+    </SerializedObject>
+    <SerializedObject Name="Breakpoint1">
+      <wxString Value="C:\Users\aleast\github\pongTest\ver1\game_logic.c" Name="file"/>
+      <int Value="149" Name="lineno"/>
+      <wxString Value="" Name="function_name"/>
+      <wxString Value="" Name="memory_address"/>
+      <int Value="1" Name="bp_type"/>
+      <int Value="0" Name="watchpoint_type"/>
+      <wxString Value="" Name="watchpt_data"/>
+      <CData Name="commandlist"/>
+      <bool Value="0" Name="regex"/>
+      <bool Value="0" Name="is_temp"/>
+      <bool Value="1" Name="is_enabled"/>
+      <int Value="0" Name="ignore_number"/>
+      <wxString Value="" Name="conditions"/>
+      <int Value="0" Name="origin"/>
+    </SerializedObject>
   </SerializedObject>
 </Session>

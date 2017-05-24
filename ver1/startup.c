@@ -97,7 +97,7 @@ OBJECT ball =
 {
 	&ball_geometry,
 	0,0,
-	12,50,
+	12,10,
 	draw_object,
 	clear_object,
 	move_object,
@@ -225,16 +225,20 @@ int main(void)
 	app_init_keyboards();
 	
 	graphic_initalize();
-	//ascii_init();
+	ascii_init();
 	
 	graphic_clear_screen();
 	
 	drawing_init();
-	//ascii_clear_display();
+	ascii_clear_display();
 	
-	//welcome();
+	welcome();
 
+	delay_micro(100);
 	
+	ascii_init();
+	
+	update_score(playerLeft, playerRight);
 
 	for(int i = 0; i <= 10; i++)
 	{
