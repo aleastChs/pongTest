@@ -13,6 +13,10 @@
 #include "player_logic.h"
 
 
+// updating the ascii display with new outputs
+// Parameters : 
+// 				char textTop[] 		- Array of chars (ex = "Hello")		- Prints out on the LCD - TOP -LINE		
+// 				char textBottom[] 	- Array of chars (ex = "Hello")		- Prints out on the LCD - BOTTOM -LINE
 void update_ascii_display(char textTop[], char textBottom[]) 
 {
 	char *str;

@@ -147,7 +147,7 @@ OBJECT p2_obj =
 {
 	&player_geometry,
 	0,0,
-	123,25,
+	122,25,
 	draw_object,
 	clear_object,
 	move_object,
